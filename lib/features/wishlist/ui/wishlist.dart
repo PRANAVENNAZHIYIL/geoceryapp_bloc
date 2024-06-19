@@ -32,20 +32,29 @@ class _WishlistssssState extends State<Wishlistssss> {
           buildWhen: (previous, current) => current is! WishlistActionState,
           builder: (context, state) {
             switch (state.runtimeType) {
+              case WishListinitial:
+                return Scaffold(
+                    body: Center(
+                  child: CircularProgressIndicator(),
+                ));
               case WishListSuccessState:
                 final wishlist = state as WishListSuccessState;
-                return ListView.separated(
-                    itemBuilder: (c, i) {
-                      return WishTile(
-                          productDataModel: wishlist.wishItems[i],
-                          wishbloc: wishlistBloc);
-                    },
-                    separatorBuilder: (c, i) {
-                      return SizedBox(
-                        height: 5,
+                return wishlist.wishItems.isNotEmpty
+                    ? ListView.separated(
+                        itemBuilder: (c, i) {
+                          return WishTile(
+                              productDataModel: wishlist.wishItems[i],
+                              wishbloc: wishlistBloc);
+                        },
+                        separatorBuilder: (c, i) {
+                          return SizedBox(
+                            height: 5,
+                          );
+                        },
+                        itemCount: wishlist.wishItems.length)
+                    : Center(
+                        child: Text('No wishList Items'),
                       );
-                    },
-                    itemCount: wishlist.wishItems.length);
 
               default:
             }

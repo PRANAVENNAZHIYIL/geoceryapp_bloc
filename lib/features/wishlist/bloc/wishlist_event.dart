@@ -9,6 +9,17 @@ class WishListRemoveFromCartEvent extends WishlistEvent {
   final ProductDataModel productDataModel;
 
   WishListRemoveFromCartEvent({required this.productDataModel});
+
+  // CartRemoveFromCartEvent({
+  //   required this.productDataModel,
+  // });
+}
+
+class WishListSucessEvent extends WishlistEvent {
+  final ProductDataModel productDataModel;
+
+  WishListSucessEvent({required this.productDataModel});
+
   // CartRemoveFromCartEvent({
   //   required this.productDataModel,
   // });

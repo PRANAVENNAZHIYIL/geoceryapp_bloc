@@ -3,10 +3,9 @@ part of 'cart_bloc.dart';
 @immutable
 abstract class CartEvent {}
 
-class CartInitialEvent extends CartEvent{
-  
-}
+class CartInitialEvent extends CartEvent {}
 
+class CartSucessEvent extends CartEvent {}
 
 class CartRemoveFromCartEvent extends CartEvent {
   final ProductDataModel productDataModel;

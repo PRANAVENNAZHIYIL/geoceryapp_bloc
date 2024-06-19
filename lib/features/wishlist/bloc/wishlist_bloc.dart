@@ -13,10 +13,13 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
   WishlistBloc() : super(WishListinitial()) {
     on<WishListInitialEvent>(wishlistinitialevent);
     on<WishListRemoveFromCartEvent>(wishListRemoveFromCartEvent);
+    // on<WishListSucessEvent>(wishListSucessEvent);
   }
 
   FutureOr<void> wishlistinitialevent(
-      WishListInitialEvent event, Emitter<WishlistState> emit) {
+      WishListInitialEvent event, Emitter<WishlistState> emit) async {
+    emit(WishListinitial());
+    await Future.delayed(Duration(milliseconds: 800));
     emit(WishListSuccessState(wishItems: wishlistItems));
   }
 
